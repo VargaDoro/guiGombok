@@ -161,6 +161,7 @@ public class Bomb extends javax.swing.JFrame {
         kilepes();
     }//GEN-LAST:event_formWindowClosing
 
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         kilepes();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
