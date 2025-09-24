@@ -4,9 +4,11 @@
  */
 package main;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,8 +36,18 @@ public class Bomb extends javax.swing.JFrame {
         btnLetrehoz = new javax.swing.JButton();
         pnMegjelenit = new javax.swing.JPanel();
         btnKozepre = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         btnLetrehoz.setText("Létrehoz");
         btnLetrehoz.addActionListener(new java.awt.event.ActionListener() {
@@ -54,6 +66,34 @@ public class Bomb extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kozosKattintasEsemeny(evt);
+            }
+        });
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kozosKattintasEsemeny(evt);
+            }
+        });
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Kilépés");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,8 +103,13 @@ public class Bomb extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnLetrehoz)
                     .addComponent(btnKozepre))
-                .addGap(18, 18, 18)
-                .addComponent(pnMegjelenit, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addComponent(pnMegjelenit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -72,15 +117,20 @@ public class Bomb extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnMegjelenit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnLetrehoz)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnKozepre)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                        .addComponent(btnKozepre))
+                    .addComponent(pnMegjelenit, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLetrehozActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLetrehozActionPerformed
@@ -91,7 +141,8 @@ public class Bomb extends javax.swing.JFrame {
             btn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(rootPane, btn.getText());
+                    //JOptionPane.showMessageDialog(rootPane, btn.getText());
+                    JOptionPane.showMessageDialog(rootPane, e.getActionCommand());
                 }
             });
         }
@@ -101,10 +152,30 @@ public class Bomb extends javax.swing.JFrame {
     private void btnKozepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKozepreActionPerformed
         setLocationRelativeTo(null);
     }//GEN-LAST:event_btnKozepreActionPerformed
+//jButton2, jButton3 közös eseménye:
+    private void kozosKattintasEsemeny(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kozosKattintasEsemeny
+        JOptionPane.showMessageDialog(rootPane, evt.getActionCommand());
+    }//GEN-LAST:event_kozosKattintasEsemeny
 
-    /**
-     * @param args the command line arguments
-     */
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        kilepes();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        kilepes();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void kilepes() throws HeadlessException {
+        String kerdes = "Biztsoan kilépsz?";
+        String cim = "Kilépés";
+        int jel = JOptionPane.QUESTION_MESSAGE; //0
+        int gombok = JOptionPane.YES_NO_OPTION; //3
+        int gomb = JOptionPane.showConfirmDialog(rootPane, kerdes, cim, gombok, jel);
+        if (gomb == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -140,6 +211,11 @@ public class Bomb extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnKozepre;
     private javax.swing.JButton btnLetrehoz;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel pnMegjelenit;
     // End of variables declaration//GEN-END:variables
 }
