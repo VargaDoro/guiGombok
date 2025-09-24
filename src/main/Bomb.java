@@ -57,7 +57,7 @@ public class Bomb extends javax.swing.JFrame {
         });
 
         pnMegjelenit.setBorder(javax.swing.BorderFactory.createTitledBorder("Generált gombok"));
-        pnMegjelenit.setLayout(new java.awt.GridLayout());
+        pnMegjelenit.setLayout(new java.awt.GridLayout(1, 0));
 
         btnKozepre.setText("Középre");
         btnKozepre.addActionListener(new java.awt.event.ActionListener() {
@@ -123,9 +123,9 @@ public class Bomb extends javax.swing.JFrame {
                         .addComponent(btnKozepre))
                     .addComponent(pnMegjelenit, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -147,6 +147,7 @@ public class Bomb extends javax.swing.JFrame {
             });
         }
         pnMegjelenit.revalidate();
+        
     }//GEN-LAST:event_btnLetrehozActionPerformed
 
     private void btnKozepreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKozepreActionPerformed
